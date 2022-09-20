@@ -1,11 +1,14 @@
 import { useCountries } from '../../hooks/useCountries';
 import CountryCard from '../CountryCard/CountryCard';
+import './Main.css';
 
 export default function Main() {
   const { filterCountries, continent, setContinent } = useCountries();
 
   return (
     <main>
+      <h1>Country Flags</h1>
+      <label>Select Continent</label>
       <select
         value={continent}
         onChange={(e) => {
