@@ -3,7 +3,7 @@ import CountryCard from '../CountryCard/CountryCard';
 import './Main.css';
 
 export default function Main() {
-  const { filterCountries, continent, setContinent } = useCountries();
+  const { filterAndSortCountries, continent, setContinent, sort, setSort } = useCountries();
 
   return (
     <main>
@@ -24,7 +24,18 @@ export default function Main() {
         <option value='Asia'>Asia</option>
         <option value='Antarctica'>Antarctica</option>
       </select>
-      {filterCountries().map((country) => (
+      <label>Sort</label>
+      <select
+        value={sort}
+        onChange={(e) => {
+          setSort(e.target.value);
+        }}
+      >
+        <option value='none'>none</option>
+        <option value='A-Z'>A-Z</option>
+        <option value='Z-A'>Z-A</option>
+      </select>
+      {filterAndSortCountries().map((country) => (
         <CountryCard className="country" key={country.name} {...country} />
       ))}
     </main>
